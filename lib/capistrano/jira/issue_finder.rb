@@ -5,7 +5,7 @@ module Capistrano
 
       execute do |args|
         jql = "id IN ('#{args[:ids].join("','")}')"
-        Jira.client.Issue.jql(jql, fields: ['status'], max_results: 1_000_000, validate_query: false))
+        Jira.client.Issue.jql(jql, fields: ['status'], max_results: 1_000_000, validate_query: false)
       end
     end
   end

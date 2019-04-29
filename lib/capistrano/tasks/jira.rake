@@ -13,10 +13,11 @@ namespace :jira do
   desc 'Update JIRA issues upon deployment'
   task :update_issues do |_, args|
     on :app do |_|
-      sha_range = "#{args[:from] || fetch(:previous_revision)}...#{args[:to] || fetch(:current_revision)}"
+      sha_range = ENV['SHA_RANGE'] || "#{fetch(:previous_revision)}...#{fetch(:current_revision)}"
 
-      fatal "WARNING: #{sha_range} is not a valid commit range" if sha_range.length < 20
+      fatal "WARNING: #{sha_range} is not a valid commit range" if sha_range.length < 17
 
+      info Rainbow("Searching for commits in sha range #{sha_range}").blue
       commits = Capistrano::Jira::CommitFinder.new.find(sha_range: sha_range)
 
       ids = commits.flat_map { |c| c.ids }.uniq
