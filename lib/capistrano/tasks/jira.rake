@@ -1,3 +1,5 @@
+require "rainbow"
+
 namespace :load do
   task :defaults do
     set :jira_username,                 ENV['CAPISTRANO_JIRA_USERNAME']
