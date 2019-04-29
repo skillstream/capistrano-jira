@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'capistrano'   , '~> 3.7'
   spec.add_dependency 'jira-ruby'    , '~> 1.2'
   spec.add_dependency 'activesupport', '~> 5.0'
-  spec.add_dependency 'rainbow'      , '~> 2.2'
+  spec.add_dependency 'rainbow'      , '>= 2.2'
 
   spec.add_development_dependency 'bundler', '~> 1.12'
   spec.add_development_dependency 'rake'   , '~> 10.0'
